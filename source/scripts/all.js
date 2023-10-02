@@ -255,8 +255,10 @@ define("scripts/game.js", function (exports) {
     if (fruit.type != "boom") {
       fruit.broken(angle);
       if ((index = fruits.indexOf(fruit))) fruits.splice(index, 1);
-      score.number(++scoreNumber);
-      this.applyScore(scoreNumber);
+      // score.number(++scoreNumber);
+
+      score.number((scoreNumber = scoreNumber + 0.5));
+      this.applyScore(scoreNumber.toFixed(2));
     } else {
       boomSnd.play();
       this.pauseAllFruit();
@@ -9002,7 +9004,7 @@ define("scripts/object/score.js", function (exports) {
       .createImage("default", "images/score.png", imageSx, 8, 29, 31)
       .hide();
     text1 = layer
-      .createText("default", "0", text1Sx, 24, "90-#fc7f0c-#ffec53", "30px")
+      .createText("default", "0.00", text1Sx, 24, "90-#fc7f0c-#ffec53", "30px")
       .hide();
     text2 = layer
       .createText("default", "BEST 9999", text2Sx, 48, "#af7c05", "14px")
