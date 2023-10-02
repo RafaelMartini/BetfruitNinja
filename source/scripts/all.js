@@ -257,7 +257,14 @@ define("scripts/game.js", function (exports) {
       if ((index = fruits.indexOf(fruit))) fruits.splice(index, 1);
       // score.number(++scoreNumber);
 
-      score.number((scoreNumber = scoreNumber + 0.5));
+      if (fruit.type == "banana") {
+        score.number((scoreNumber = scoreNumber + 3.5));
+      } else if (fruit.type == "apple") {
+        score.number((scoreNumber = scoreNumber + 15.0));
+      } else {
+        score.number((scoreNumber = scoreNumber + 0.5));
+      }
+
       this.applyScore(scoreNumber.toFixed(2));
     } else {
       boomSnd.play();
